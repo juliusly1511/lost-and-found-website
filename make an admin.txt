@@ -1,0 +1,21 @@
+# make an admin account#
+
+step1:
+cd "C:\Program Files\PostgreSQL\18\bin"
+psql -U postgres -d lost_and_found
+
+step 2:
+INSERT INTO users (username, email, password_hash, role) 
+VALUES ('admin', 'admin@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
+
+step 3:
+login in with the credentiials
+username:admin@example.com
+password:password
+then go to http://localhost:3000/admin
+
+#promote a client to admin account#
+
+-- Replace 'your_email@example.com' with your actual email
+UPDATE users SET role = 'admin' WHERE email = 'your_email@example.com';
+
